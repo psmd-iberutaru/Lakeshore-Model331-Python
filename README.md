@@ -40,7 +40,7 @@ temp_control = lake.Lakeshore_Model331(port='port_name', baudrate=9600)
 # The command to be sent.
 scip_command = '*IDN?'
 temp_control.send_scip_command(command=scip_command)
-# Alaises include .write(), .send(), and .command().
+# Aliases include .write(), .send(), and .command().
 ```
 
 Some of this is already taken care of you in the form of a more natural Python interface.
