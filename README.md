@@ -24,13 +24,23 @@ From there, a Lakeshore Model 331 class instance can be created. (Try not to get
 
 ```python
 import Lakeshore_Model331 as lake
-temp_control = lake.Lakeshore_Model331(port='port_name', baudrate=9600)
+temp_control = lake.Lakeshore_Model331(port='port_name', baudrate=9600, timeout=5)
+```
+
+You can also create a class using a configuration dictionary containing the terms key-value described below. The proper way to create a class using a configuration dictionary is described below: (This also allows you to use a configuration file through configparser or similar packages.)
+
+```python
+import Lakeshore_Model331 as lake
+
+config_dict = {'port':'port_name', 'baudrate':9600, 'timeout':2}
+temp_control = lake.Lakeshore_Model331.load_configuration(config_dict, _flat=False)
 ```
 
 Here, the terms mean:
 
 * **port** : the name of the port connection, generally a string
 * **baudrate** : the baudrate that the temperature controller is set to (the Lakeshore Model 331 default is 9600).
+* **timeout** : the duration of timeout for each serial command
 
 From there, you can send a scip command to the temprature controller like so,
 
